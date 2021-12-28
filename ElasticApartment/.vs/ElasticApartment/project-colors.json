@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "10e825ca-3d00-43f5-b678-c4e52acd3989": {
+      "ProjectGuid": "10e825ca-3d00-43f5-b678-c4e52acd3989",
+      "DisplayName": "ElasticApartment",
+      "ColorIndex": 0
+    },
+    "b1265469-301e-43e0-b752-0b848b69319b": {
+      "ProjectGuid": "b1265469-301e-43e0-b752-0b848b69319b",
+      "DisplayName": "ElasticApartment.Insert",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

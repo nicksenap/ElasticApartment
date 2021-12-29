@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ElasticApartment.Models;
+using ElasticApartment.Model;
 using Microsoft.AspNetCore.Mvc;
 using Nest;
 

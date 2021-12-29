@@ -1,10 +1,10 @@
 ﻿using System;
-using ElasticApartment.Models;
+using ElasticApartment.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Nest;
 
-namespace ElasticApartment.Utility
+namespace ElasticApartment.API.Utility
 {
     public static class ElasticSearchExtensions
     {

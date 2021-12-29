@@ -1,16 +1,16 @@
+using ElasticApartment.API.Utility;
+using ElasticApartment.Model;
+using ElasticApartment.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ElasticApartment.Models;
-using ElasticApartment.Services;
-using ElasticApartment.Utility;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace ElasticApartment
+namespace ElasticApartment.API
 {
     public class Startup
     {

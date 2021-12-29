@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ElasticApartment.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,42 +14,49 @@ namespace ElasticApartment.Controllers
     [ApiController]
     public class SearchController : ControllerBase
     {
-        private readonly IElasticClient elasticClient;
+        private readonly IElasticClient _elasticClient;
 
         public SearchController(IElasticClient elasticClient)
         {
-            this.elasticClient = elasticClient;
+            _elasticClient = elasticClient;
         }
 
-        // GET api/<SearchController>/5
         [HttpGet("{id}")]
         public Property Get(string id)
         {
             throw new AbandonedMutexException();
         }
 
-        // POST api/<SearchController>
+
         [HttpPost]
-        public async Task<Property> Post([FromBody] QueryModel model)
+        public async Task<IEnumerable<Property>> Post([FromBody] QueryModel model)
         {
-            var response = await elasticClient.SearchAsync<Property>();
-            var request = new SearchRequest
+            var limit = model.Limit == 0 ? 10 : model.Limit;
+            var termsQuery = new TermsQuery
             {
-                //or specify index via settings.DefaultIndex("mytweetindex"),
-                From = 0,
-                Size = 10,
-                Query = new MatchQuery { Field = "description", Query = "nest", Fuzziness = Fuzziness.Auto }
+                Field = "market.keyword",
+                Terms = model.Market
             };
-            var resp = elasticClient.Search<dynamic>(s => s.AllIndices()
-                .From(0)
-                .Take(10)
-                .Query(qry => qry
-                    .Bool(b => b
-                        .Must(m => m
-                            .QueryString(qs => qs
-                                .DefaultField("_all")
-                                .Query(model.SearchPhase))))));
-            throw new AbandonedMutexException();
+
+            var queryStringQuery = new QueryStringQuery
+            {
+                Query = model.SearchPhase,
+                Fuzziness = Fuzziness.AutoLength(1,3)
+            };
+
+            if (model.Market.Count > 0)
+            {
+            }
+
+            var query1 = new SearchDescriptor<Property>().Query(q =>
+                q.Bool(b => b
+                    .Must(m => m.QueryString(_ => queryStringQuery),
+                        qt => qt.Terms(_ => termsQuery)
+                    )));
+
+            var response = await _elasticClient.SearchAsync<Property>(query1.Size(limit));
+
+            return response.Hits.Select(r => r.Source);
         }
 
 

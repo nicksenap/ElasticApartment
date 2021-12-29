@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace ElasticApartment.Models
 {
@@ -8,7 +9,7 @@ namespace ElasticApartment.Models
         public string SearchPhase { get; set; }
         
         [JsonProperty("market")]
-        public string Market { get; set; }
+        public List<string> Market { get; set; }
 
         [JsonProperty("limit")]
         public int Limit { get; set; }

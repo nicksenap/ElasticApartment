@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using ElasticApartment.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -21,55 +20,39 @@ namespace ElasticApartment.Controllers
             _elasticClient = elasticClient;
         }
 
-        [HttpGet("{id}")]
-        public Property Get(string id)
-        {
-            throw new AbandonedMutexException();
-        }
-
-
         [HttpPost]
-        public async Task<IEnumerable<Property>> Post([FromBody] QueryModel model)
+        public async Task<IEnumerable<dynamic>> Post([FromBody] QueryModel model)
         {
             var limit = model.Limit == 0 ? 10 : model.Limit;
-            var termsQuery = new TermsQuery
-            {
-                Field = "market.keyword",
-                Terms = model.Market
-            };
 
             var queryStringQuery = new QueryStringQuery
             {
                 Query = model.SearchPhase,
-                Fuzziness = Fuzziness.AutoLength(1,3)
+                Fuzziness = Fuzziness.Auto,
+                FuzzyMaxExpansions = 5,
+                FuzzyPrefixLength = 5,
+                FuzzyRewrite = MultiTermQueryRewrite.ConstantScore,
+                Analyzer = "stop"
             };
+
+            var termsQuery = new TermsQuery();
 
             if (model.Market.Count > 0)
             {
+                termsQuery.Field = "market.keyword";
+                termsQuery.Terms = model.Market;
             }
 
-            var query1 = new SearchDescriptor<Property>().Query(q =>
-                q.Bool(b => b
+            var searchDescriptor = new SearchDescriptor<dynamic>()
+                .AllIndices()
+                .Query(q => q.Bool(b => b
                     .Must(m => m.QueryString(_ => queryStringQuery),
                         qt => qt.Terms(_ => termsQuery)
                     )));
 
-            var response = await _elasticClient.SearchAsync<Property>(query1.Size(limit));
+            var response = await _elasticClient.SearchAsync<dynamic>(searchDescriptor.Size(limit));
 
             return response.Hits.Select(r => r.Source);
-        }
-
-
-        // PUT api/<SearchController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SearchController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

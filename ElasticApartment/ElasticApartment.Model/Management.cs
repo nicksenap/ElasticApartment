@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
-namespace ElasticApartment.Models
+
+namespace ElasticApartment.Model.Models
 {
     public class Management
     {

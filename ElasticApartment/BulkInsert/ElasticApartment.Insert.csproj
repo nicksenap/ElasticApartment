@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElasticApartment\ElasticApartment.csproj" />
+    <ProjectReference Include="..\ElasticApartment\ElasticApartment.API.csproj" />
   </ItemGroup>
 
 </Project>

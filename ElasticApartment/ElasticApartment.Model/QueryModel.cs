@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ElasticApartment.Models
+namespace ElasticApartment.Model
 {
     public class QueryModel
     {

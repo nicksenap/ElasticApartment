@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.API", "ElasticApartment\ElasticApartment.API.csproj", "{10E825CA-3D00-43F5-B678-C4E52ACD3989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.API", "ElasticApartment.API\ElasticApartment.API.csproj", "{10E825CA-3D00-43F5-B678-C4E52ACD3989}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.Insert", "BulkInsert\ElasticApartment.Insert.csproj", "{B1265469-301E-43E0-B752-0B848B69319B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.Insert", "ElasticApartment.Insert\ElasticApartment.Insert.csproj", "{B1265469-301E-43E0-B752-0B848B69319B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticApartment.Model", "ElasticApartment.Model\ElasticApartment.Model.csproj", "{4A388018-A743-4309-AF53-074B32E2026F}"
 EndProject

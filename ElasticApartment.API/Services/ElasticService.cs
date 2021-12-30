@@ -25,7 +25,6 @@ namespace ElasticApartment.API.Services
                 Query = model.SearchPhase,
                 Analyzer = "stop",
                 AutoGenerateSynonymsPhraseQuery = true,
-                FuzzyRewrite = MultiTermQueryRewrite.ConstantScore,
             };
 
             var termsQuery = new TermsQuery();

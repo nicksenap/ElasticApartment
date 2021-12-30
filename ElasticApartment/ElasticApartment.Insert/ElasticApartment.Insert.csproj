@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NEST" Version="7.16.0" />
+    <PackageReference Include="NEST" Version="7.10.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ElasticApartment\ElasticApartment.API.csproj" />
+    <ProjectReference Include="..\ElasticApartment.Model\ElasticApartment.Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,32 +13,13 @@ namespace ElasticApartment.API.Utility
         {
             var url = configuration["elasticsearch:url"];
             var defaultIndex = configuration["elasticsearch:index"];
-
+            var user = configuration["elasticsearch:user"];
+            var pass = configuration["elasticsearch:password"];
             var settings = new ConnectionSettings(new Uri(url))
                 .DefaultIndex(defaultIndex);
-
-            AddDefaultMappings(settings);
-
+            settings.BasicAuthentication(user, pass);
             var client = new ElasticClient(settings);
-
             services.AddSingleton<IElasticClient>(client);
-
-            CreateIndex(client, defaultIndex);
-        }
-
-        private static void AddDefaultMappings(ConnectionSettings settings)
-        {
-            settings
-                .DefaultMappingFor<Property>(m => m
-                    .Ignore(p => p.City)
-                );
-        }
-
-        private static void CreateIndex(IElasticClient client, string indexName)
-        {
-            var createIndexResponse = client.Indices.Create(indexName,
-                index => index.Map<Property>(x => x.AutoMap())
-            );
         }
     }
 }

@@ -7,7 +7,7 @@ using Nest;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace ElasticApartment.Controllers
+namespace ElasticApartment.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,7 +23,7 @@ namespace ElasticApartment.Controllers
         [HttpPost]
         public async Task<IEnumerable<dynamic>> Post([FromBody] QueryModel model)
         {
-            var limit = model.Limit == 0 ? 10 : model.Limit;
+            var limit = model.Limit == 0 ? 25 : model.Limit;
 
             var queryStringQuery = new QueryStringQuery
             {
@@ -32,7 +32,8 @@ namespace ElasticApartment.Controllers
                 FuzzyMaxExpansions = 5,
                 FuzzyPrefixLength = 5,
                 FuzzyRewrite = MultiTermQueryRewrite.ConstantScore,
-                Analyzer = "stop"
+                Analyzer = "stop",
+                Boost = 1.1
             };
 
             var termsQuery = new TermsQuery();

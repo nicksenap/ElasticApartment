@@ -1,6 +1,5 @@
+using ElasticApartment.API.Services;
 using ElasticApartment.API.Utility;
-using ElasticApartment.Model;
-using ElasticApartment.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,11 +27,11 @@ namespace ElasticApartment.API
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ElasticApartment", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ElasticApartment.API", Version = "v1" });
             });
 
-            services.AddSingleton<IElasticService<Property>, ElasticPropertyService>();
             services.AddElasticSearch(Configuration);
+            services.AddSingleton<IElasticService, ElasticService>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

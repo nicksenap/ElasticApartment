@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ElasticApartment.API.Interfaces;
 using ElasticApartment.Model;
 using Microsoft.Extensions.Logging;
 using Nest;

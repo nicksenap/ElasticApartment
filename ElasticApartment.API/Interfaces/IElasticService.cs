@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ElasticApartment.Model;
-using Nest;
 
-namespace ElasticApartment.API.Services
+namespace ElasticApartment.API.Interfaces
 {
     public interface IElasticService
     {

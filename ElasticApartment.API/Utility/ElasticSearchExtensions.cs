@@ -12,11 +12,9 @@ namespace ElasticApartment.API.Utility
             this IServiceCollection services, IConfiguration configuration)
         {
             var url = configuration["elasticsearch:url"];
-            var defaultIndex = configuration["elasticsearch:index"];
             var user = configuration["elasticsearch:user"];
             var pass = configuration["elasticsearch:password"];
-            var settings = new ConnectionSettings(new Uri(url))
-                .DefaultIndex(defaultIndex);
+            var settings = new ConnectionSettings(new Uri(url));
             settings.BasicAuthentication(user, pass);
             var client = new ElasticClient(settings);
             services.AddSingleton<IElasticClient>(client);

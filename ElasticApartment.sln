@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.Insert", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.Model", "ElasticApartment.Model\ElasticApartment.Model.csproj", "{4A388018-A743-4309-AF53-074B32E2026F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticApartment.API.Test", "ElasticApartment.API.Test\ElasticApartment.API.Test.csproj", "{64A7E1FA-0B42-4ED1-9186-A8F08B4912E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.API.Test", "ElasticApartment.API.Test\ElasticApartment.API.Test.csproj", "{64A7E1FA-0B42-4ED1-9186-A8F08B4912E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticApartment.SAM", "ElasticApartment.SAM\ElasticApartment.SAM.csproj", "{DAAADEEE-84CD-4B6E-9227-A711B74D0225}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{64A7E1FA-0B42-4ED1-9186-A8F08B4912E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64A7E1FA-0B42-4ED1-9186-A8F08B4912E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64A7E1FA-0B42-4ED1-9186-A8F08B4912E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAAADEEE-84CD-4B6E-9227-A711B74D0225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAAADEEE-84CD-4B6E-9227-A711B74D0225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAAADEEE-84CD-4B6E-9227-A711B74D0225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAAADEEE-84CD-4B6E-9227-A711B74D0225}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

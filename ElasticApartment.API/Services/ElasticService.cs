@@ -42,7 +42,7 @@ namespace ElasticApartment.API.Services
                     .Must(m => m.MultiMatch(_ => multiMatchQuery),
                         qt => qt.Terms(_ => termsQuery)
                     )));
-            
+
             var response = await _elasticClient.SearchAsync<dynamic>(searchDescriptor.Size(limit));
             _logger.LogInformation(
                 $"[ElasticService.SearchAsync] Elastic search returned {response.Hits.Count} result for searchPhase {model.SearchPhase}");

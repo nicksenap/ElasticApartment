@@ -16,10 +16,10 @@ Start project `ElasticApartment.Insert` from visual studio, make sure to have th
 ## The serverless alternative
 The project `ElasticApartment.SAM` is the serverless alternative for this api, build using [AWS SAM](https://aws.amazon.com/serverless/sam/) framework,
 this API (or the Post method) we been using is presented a Lambda function with a API Gateway in front of it to recieve request.
-## To deploy the serverless api
+## To deploy the serverless API
 Go to `\ElasticApartment\ElasticApartment.SAM` folder and run `dotnet lambda deploy-serverless`,
 make sure to have correct aws credential profile and region in the `aws-lambda-tools-defaults.json` file
-## To try the serverless api
+## To try the serverless API
 The serverless api is deployed to AWS and can be reach by:
 ```bash
 curl --location --request POST 'https://wtwxpuj1tk.execute-api.eu-north-1.amazonaws.com/Prod/' \

@@ -1,3 +1,4 @@
+using ElasticApartment.API.Interfaces;
 using ElasticApartment.API.Services;
 using ElasticApartment.API.Utility;
 using Microsoft.AspNetCore.Builder;

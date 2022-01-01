@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ElasticApartment.API.Interfaces;
 using ElasticApartment.API.Services;
 using ElasticApartment.Model;
 using Microsoft.AspNetCore.Mvc;
